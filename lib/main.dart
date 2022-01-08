@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:demotask/ui/auth/face_auth.dart';
+import 'package:demotask/ui/auth/login_otp_auth.dart';
 import 'package:demotask/ui/global.dart';
 import 'package:demotask/ui/home_screen/model/git_data_model.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -15,6 +17,7 @@ import 'core/utils/bindings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await globalVerbInit();
   runApp(const MyApp());
 }

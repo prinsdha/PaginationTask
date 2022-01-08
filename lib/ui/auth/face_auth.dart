@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:demotask/core/constant/app_icons.dart';
+import 'package:demotask/ui/auth/login_otp_auth.dart';
 import 'package:demotask/ui/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -87,6 +88,7 @@ class _FaceAuthState extends State<FaceAuth> {
           useErrorDialogs: true);
     } on PlatformException catch (e) {
       setState(() {
+        print(e.message);
         _authorized = "Error - ${e.message}";
       });
       return;
@@ -162,7 +164,30 @@ class _FaceAuthState extends State<FaceAuth> {
               height: 120,
             ),
           ),
-          Center(child: Text(_authorized)),
+          Center(
+              child: Text(
+            _authorized,
+            textAlign: TextAlign.center,
+          )),
+          GestureDetector(
+            onTap: () {
+              Get.offNamed(LoginOtpScreen.routeName);
+            },
+            child: Container(
+              height: 50,
+              margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.black, borderRadius: BorderRadius.circular(10)),
+              child: const Center(
+                child: Text(
+                  "Login via Mobile OTP",
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

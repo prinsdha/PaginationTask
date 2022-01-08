@@ -16,3 +16,6 @@ flutterToast(String msg) {
       backgroundColor: Colors.black.withOpacity(0.70),
       fontSize: 14);
 }
+void disposeKeyboard() {
+  return FocusManager.instance.primaryFocus?.unfocus();
+}
